@@ -1,0 +1,25 @@
+{
+    "name": "valentin/contao-seo_preview",
+    "type": "contao-module",
+    "description": "Contao Open Source CMS extension seo_preview",
+    "keywords": ["contao", "seo", "seo_preview"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name":"Valentin Sampl",
+            "email":"valentin.sampl@gmail.com",
+            "role":"Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.7",
+        "contao/core": ">=3.2,<4"
+    },
+    "extra": {
+        "contao": {
+            "sources": {
+                "": "system/modules/seo_preview"
+            }
+        }
+    }
+}
