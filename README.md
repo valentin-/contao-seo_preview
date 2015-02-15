@@ -1,3 +1,2 @@
 # contao-seo_preview
-Contao SEO Preview Extension
-Zeigt die Suchmaschinen-Vorschau in der Seiteneinstellung an.
+Contao SEO Preview Extension zeigt die Suchmaschinen-Vorschau in der Seiteneinstellung an.
