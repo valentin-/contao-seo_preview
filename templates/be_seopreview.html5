@@ -1,0 +1,30 @@
+
+<div id="seo_preview_wrapper">
+
+<div class="headline"><?php echo $this->seo_preview_headline;?></div>
+
+<div id="seo_preview">
+	<div class="title">
+		<span class="page_title"><?php echo $this->title;?></span> 
+		<span class="root_page_title"> - <?php echo $this->rootTitle;?></span>
+	</div>
+	<div class="url"><?php echo $this->url;?></div>
+	<div class="description" data-empty="<?php echo $this->seo_preview_noDescription;?>"><?php echo $this->description;?></div>
+</div>
+<div id="seo_count">
+	<div class="title">
+		<span class="label"><?php echo $this->seo_preview_title;?>: </span>
+		<div class="value">
+			<span class="count">0</span>/<span class="max">60</span> Zeichen
+		</div>
+	</div>
+	<div class="description">
+		<span class="label"><?php echo $this->seo_preview_description;?>: </span>
+		<div class="value">
+			<span class="count">0</span>/<span class="max">160</span> Zeichen
+		</div>	
+	</div>
+</div>
+<div class="clear"></div>
+<div class="info"><?php echo $this->seo_preview_info;?></div>
+</div>

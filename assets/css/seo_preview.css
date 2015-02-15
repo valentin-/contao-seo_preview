@@ -1,0 +1,71 @@
+#seo_preview_wrapper {
+  margin-top: 10px;
+}
+#seo_preview_wrapper .headline {
+  font-size: .6875rem;
+  color: #444;
+  font-weight: bold;
+  margin:10px 0 5px;
+}
+#seo_preview {
+  width: 512px;
+  font-family: arial, sans-serif;
+  border: 1px solid #ebebeb;
+  padding: 10px;
+  background-color: #fff;
+  float:left;
+}
+#seo_preview .title {
+  color: rgb(26, 13, 171);
+  font-size: 17px;
+  line-height: 21.6000003814697px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  white-space: nowrap;
+}
+#seo_preview .url {
+  font-size: 12px;
+  color:#006621;
+  line-height: 16px;
+  margin:3px 0;
+}
+#seo_preview .description {
+  color: rgb(84, 84, 84);
+  font-size:12px;
+  line-height: 18.2000007629395px;
+  word-wrap: break-word;
+}
+#seo_count {
+  margin-top: 5px;
+  float:left;
+  margin-left: 10px;
+  line-height: 1.4em;
+}
+#seo_count .value {
+  color:#999;
+}
+#seo_count > div.warn .value {
+  color:orange;
+}
+#seo_count > div.ok .value {
+  color:green;
+}
+#seo_count > div.error .value {
+  color:red;
+}
+#seo_count .title {
+  margin-bottom: 10px;
+}
+#seo_count .label {
+  display: block;
+  font-weight: bold;
+}
+#seo_preview_wrapper .info {
+  clear:both;
+  margin-top: 5px;
+  line-height: 1.2em;
+  font-size: .625rem;
+  color: #999;
+  width: 520px;
+}
