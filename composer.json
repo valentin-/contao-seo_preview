@@ -1,5 +1,5 @@
 {
-    "name": "valentin-/contao-seo_preview",
+    "name": "valentin_/contao-seo_preview",
     "type": "contao-module",
     "description": "Contao Open Source CMS extension seo_preview",
     "keywords": ["contao", "seo", "seo_preview"],
