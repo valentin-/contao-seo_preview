@@ -24,7 +24,7 @@ class tl_content_seo_preview extends Backend {
 
 	public function generatePreview($dc) {
 
-		$GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/core/' . $GLOBALS['TL_ASSETS']['JQUERY'] . '/jquery.min.js|static';
+		$GLOBALS['TL_JAVASCRIPT'][] = 'assets/jquery/core/' . $GLOBALS['TL_ASSETS']['JQUERY'] . '/jquery.min.js';
 		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/seo_preview/assets/js/noconflict.js';
 		$GLOBALS['TL_JAVASCRIPT'][] = 'system/modules/seo_preview/assets/js/seo_preview.js';
 
