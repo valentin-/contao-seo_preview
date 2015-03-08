@@ -1,14 +1,19 @@
+var seoTitle, seoPageTitle, seoDescription, seoPreview, seoCount;
+
 jQuery(document).ready(function($){
-  $(document).on('keyup change cut paste','#ctrl_title',function(){
-    $('#ctrl_pageTitle').change();
+
+  $(document).on('keyup change cut paste','[name^="title"]',function(){
+    updateVars($(this));
+    seoPageTitle.change();
   })
 
-  $('#ctrl_title').change();
+  $('[name^="title"]').change();
 
-  $(document).on('keyup change cut paste','#ctrl_pageTitle',function(){
-    v = $(this).val() ? $(this).val() : $('#ctrl_title').val();
-    c = v.length + $('.root_page_title').text().length;
-    max = $('#seo_count .title .max').text();
+  $(document).on('keyup change cut paste','[name^="pageTitle"]',function(){
+    updateVars($(this));
+    v = $(this).val() ? $(this).val() : seoTitle.val();
+    c = v.length + seoPreview.find('.root_page_title').text().length;
+    max = seoCount.find('.title .max').text();
     l = max-c;
 
     if(l < 0) {
@@ -21,18 +26,18 @@ jQuery(document).ready(function($){
       status = '';
     }
 
-    $('#seo_preview .title .page_title').empty().append(v);
-    $('#seo_count .title .count').empty().append(c)
-    $('#seo_count .title').removeClass('error ok warn').addClass(status);
+    seoPreview.find('.page_title').empty().append(v); 
+    seoCount.find('.title .count').empty().append(c)
+    seoCount.find('.title').removeClass('error ok warn').addClass(status);
   })
 
-  $('#ctrl_pageTitle').change();
+  $('[name^="pageTitle"]').change();
 
-
-  $(document).on('keyup change cut paste','#ctrl_description',function(){
+  $(document).on('keyup change cut paste','[name^="description"]',function(){
+    updateVars($(this));
     v = $(this).val();
     c = v.length;
-    max = $('#seo_count .description .max').text();
+    max = seoCount.find('.description .max').text();
     l = max-c;
 
     if(l < 0) {
@@ -46,15 +51,32 @@ jQuery(document).ready(function($){
     }
 
     if(v) {
-      $('#seo_preview .description').empty().append(v);
+      seoPreview.find('.description').empty().append(v);
     } else {
-      $('#seo_preview .description').empty().append($('#seo_preview .description').data('empty'));
+      seoPreview.find('.description').empty().append(seoPreview.find('.description').data('empty'));
     }
-    $('#seo_count .description .count').empty().append(c);
-    $('#seo_count .description').removeClass('error ok warn').addClass(status);
+    seoCount.find('.description .count').empty().append(c);
+    seoCount.find('.description').removeClass('error ok warn').addClass(status);
   })
 
-  $('#ctrl_description').change();
+  $('[name^="description"]').change();
 
+  function updateVars(el) {
+    //editAll
+    if($('[name^="pageTitle_"]').length || $('[name^="title_"]').length || $('[name^="description_"]').length) {
+      p = el.closest('.tl_box, .tl_tbox');
+      seoTitle = p.find('[name^="title"]');
+      seoPageTitle = p.find('[name^="pageTitle"]');
+      seoDescription = p.find('[name^="description"]');
+      seoPreview = p.find('.seo_preview');
+      seoCount = p.find('.seo_count');
+    } else {
+      seoTitle = $('[name^="title"]');
+      seoPageTitle = $('[name^="pageTitle"]');
+      seoDescription = $('[name^="description"]');
+      seoPreview = $('.seo_preview');
+      seoCount = $('.seo_count');
+    }
+  }
 
 })

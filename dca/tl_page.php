@@ -1,15 +1,16 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_page']['config']['onload_callback'][] = array('tl_content_seo_preview', 'addField');
+$GLOBALS['TL_DCA']['tl_page']['config']['onload_callback'][] = array('tl_page_seo_preview', 'addField');
 
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['seoPreview'] = array(
-	 'input_field_callback' => array('tl_content_seo_preview', 'generatePreview'),
-     'eval' => array('tl_class'=>'clr'),
+	'label' => &$GLOBALS['TL_LANG']['tl_page']['seoPreview'],
+	'input_field_callback' => array('tl_page_seo_preview', 'generatePreview'),
+    'eval' => array('tl_class'=>'clr'),
 );
 
 
-class tl_content_seo_preview extends Backend {
+class tl_page_seo_preview extends Backend {
 
 	public function addField() {
 
@@ -30,8 +31,6 @@ class tl_content_seo_preview extends Backend {
 
 		$GLOBALS['TL_CSS'][] = 'system/modules/seo_preview/assets/css/seo_preview.css';
 		
-		$this->loadLanguageFile('tl_content');
-
 		$objPage = $this->getPageDetails($dc->id);
 		$rootPage = $this->getPageDetails($objPage->trail[0]);
 
@@ -39,14 +38,14 @@ class tl_content_seo_preview extends Backend {
 		$objTemplate->page = $objPage->row();
 		$objTemplate->title = $objPage->pageTitle ? $objPage->pageTitle : $objPage->title;
 		$objTemplate->rootTitle = $rootPage->pageTitle ? $rootPage->pageTitle : $rootPage->title;
-		$objTemplate->description = $objPage->description ? $objPage->description : $GLOBALS['TL_LANG']['tl_content']['noDescription'];
+		$objTemplate->description = $objPage->description ? $objPage->description : $GLOBALS['TL_LANG']['tl_page']['noDescription'];
 		$objTemplate->url = $this->Environment->url.'/'.$this->generateFrontendUrl($objPage->row());
 
-		$objTemplate->seo_preview_noDescription = $GLOBALS['TL_LANG']['tl_content']['seo_preview_noDescription'];
-		$objTemplate->seo_preview_headline = $GLOBALS['TL_LANG']['tl_content']['seo_preview_headline'];
-		$objTemplate->seo_preview_title = $GLOBALS['TL_LANG']['tl_content']['seo_preview_title'];
-		$objTemplate->seo_preview_description = $GLOBALS['TL_LANG']['tl_content']['seo_preview_description'];
-		$objTemplate->seo_preview_info = $GLOBALS['TL_LANG']['tl_content']['seo_preview_info'];
+		$objTemplate->seo_preview_noDescription = $GLOBALS['TL_LANG']['tl_page']['seo_preview_noDescription'];
+		$objTemplate->seo_preview_headline = $GLOBALS['TL_LANG']['tl_page']['seo_preview_headline'];
+		$objTemplate->seo_preview_title = $GLOBALS['TL_LANG']['tl_page']['seo_preview_title'];
+		$objTemplate->seo_preview_description = $GLOBALS['TL_LANG']['tl_page']['seo_preview_description'];
+		$objTemplate->seo_preview_info = $GLOBALS['TL_LANG']['tl_page']['seo_preview_info'];
 
 		return $objTemplate->parse();
 	}
