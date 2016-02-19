@@ -10,6 +10,16 @@
 
 
 /**
+ * Register the classes
+ */
+ClassLoader::addClasses(array
+(
+	// Classes
+	'SeoPreview' => 'system/modules/seo_preview/classes/SeoPreview.php',
+));
+
+
+/**
  * Register the templates
  */
 TemplateLoader::addFiles(array

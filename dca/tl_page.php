@@ -1,7 +1,15 @@
 <?php
 
-$GLOBALS['TL_DCA']['tl_page']['config']['onload_callback'][] = array('tl_page_seo_preview', 'addField');
+$GLOBALS['TL_DCA']['tl_page']['list']['operations']['seoPreviewStatus'] = array
+(
+	'label'               => &$GLOBALS['TL_LANG']['tl_page']['edit'],
+	'href'                => 'act=edit',
+	'icon'                => 'edit.gif',
+	'button_callback'     => array('tl_page_seo_preview', 'getStatus')
+);
 
+
+$GLOBALS['TL_DCA']['tl_page']['config']['onload_callback'][] = array('tl_page_seo_preview', 'addField');
 
 $GLOBALS['TL_DCA']['tl_page']['fields']['seoPreview'] = array(
 	'label' => &$GLOBALS['TL_LANG']['tl_page']['seoPreview'],
@@ -10,7 +18,7 @@ $GLOBALS['TL_DCA']['tl_page']['fields']['seoPreview'] = array(
 );
 
 
-class tl_page_seo_preview extends Backend {
+class tl_page_seo_preview extends tl_page {
 
 	public function addField() {
 
@@ -21,6 +29,12 @@ class tl_page_seo_preview extends Backend {
 			}
 			$palette = str_replace('pageTitle', 'seoPreview,pageTitle', $palette);
 		}
+	}
+
+	public function getStatus($row, $href, $label, $title, $icon, $attributes) {
+
+		$content = SeoPreview::getPageStatus($row);
+		return '<a style="position:relative;top:-1px;" href="'.$this->addToUrl($href.'&amp;id='.$row['id']).'" title="'.specialchars($title).'"'.$attributes.'>'.$content.'</a> ';
 	}
 
 	public function generatePreview($dc) {
@@ -35,6 +49,10 @@ class tl_page_seo_preview extends Backend {
 		$rootPage = $this->getPageDetails($objPage->trail[0]);
 
 		$objTemplate = new FrontendTemplate('be_seopreview');
+
+		$objTemplate->titleLength = $GLOBALS['seoPreview']['titleLength'];
+		$objTemplate->descriptionLength = $GLOBALS['seoPreview']['descriptionLength'];
+
 		$objTemplate->page = $objPage->row();
 		$objTemplate->title = $objPage->pageTitle ? $objPage->pageTitle : $objPage->title;
 		$objTemplate->rootTitle = $rootPage->pageTitle ? $rootPage->pageTitle : $rootPage->title;
@@ -49,5 +67,4 @@ class tl_page_seo_preview extends Backend {
 
 		return $objTemplate->parse();
 	}
-
 }

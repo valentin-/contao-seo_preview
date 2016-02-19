@@ -15,13 +15,13 @@
 	<div class="title">
 		<span class="label"><?php echo $this->seo_preview_title;?>: </span>
 		<div class="value">
-			<span class="count">0</span>/<span class="max">60</span> Zeichen
+			<span class="count">0</span>/<span class="max"><?php echo $this->titleLength;?></span> Zeichen
 		</div>
 	</div>
 	<div class="description">
 		<span class="label"><?php echo $this->seo_preview_description;?>: </span>
 		<div class="value">
-			<span class="count">0</span>/<span class="max">160</span> Zeichen
+			<span class="count">0</span>/<span class="max"><?php echo $this->descriptionLength;?></span> Zeichen
 		</div>	
 	</div>
 </div>
