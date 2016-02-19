@@ -8,7 +8,7 @@ class SeoPreview extends Backend
 
 		$status = 'na';
 		
-		if ($arrPage['type'] != 'root') {
+		if ($arrPage['type'] != 'root' && $arrPage['type'] != 'redirect' && $arrPage['type'] != 'forward') {
 
 			$title = $arrPage['pageTitle'];
 			$description = $arrPage['description'];

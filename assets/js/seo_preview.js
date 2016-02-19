@@ -13,6 +13,7 @@ jQuery(document).ready(function($){
     updateVars($(this));
     v = $(this).val() ? $(this).val() : seoTitle.val();
     c = v.length + seoPreview.find('.root_page_title').text().length;
+    console.log(c);
     max = seoCount.find('.title .max').text();
     l = max-c;
 
@@ -80,3 +81,17 @@ jQuery(document).ready(function($){
   }
 
 })
+
+var SEOdecodeHtmlEntity = function(str) {
+  return str.replace(/&#(\d+);/g, function(match, dec) {
+    return String.fromCharCode(dec);
+  });
+};
+
+var SEOencodeHtmlEntity = function(str) {
+  var buf = [];
+  for (var i=str.length-1;i>=0;i--) {
+    buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
+  }
+  return buf.join('');
+};
