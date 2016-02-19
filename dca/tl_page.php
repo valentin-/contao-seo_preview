@@ -57,7 +57,7 @@ class tl_page_seo_preview extends tl_page {
 		$objTemplate->title = $objPage->pageTitle ? $objPage->pageTitle : $objPage->title;
 		$objTemplate->rootTitle = $rootPage->pageTitle ? $rootPage->pageTitle : $rootPage->title;
 		$objTemplate->description = $objPage->description ? $objPage->description : $GLOBALS['TL_LANG']['tl_page']['noDescription'];
-		$objTemplate->url = $this->Environment->url.'/'.$this->generateFrontendUrl($objPage->row());
+		$objTemplate->url = $this->Environment->url.'/'.($GLOBALS['TL_CONFIG']['addLanguageToUrl'] ? $objPage->language.'/' : '').$this->generateFrontendUrl($objPage->row());
 
 		$objTemplate->seo_preview_noDescription = $GLOBALS['TL_LANG']['tl_page']['seo_preview_noDescription'];
 		$objTemplate->seo_preview_headline = $GLOBALS['TL_LANG']['tl_page']['seo_preview_headline'];
