@@ -7,13 +7,12 @@ jQuery(document).ready(function($){
     seoPageTitle.change();
   })
 
-  $('[name^="title"]').change();
+  //$('[name^="title"]').change();
 
   $(document).on('keyup change cut paste','[name^="pageTitle"]',function(){
     updateVars($(this));
     v = $(this).val() ? $(this).val() : seoTitle.val();
     c = v.length + seoPreview.find('.root_page_title').text().length;
-    console.log(c);
     max = seoCount.find('.title .max').text();
     l = max-c;
 
@@ -32,7 +31,7 @@ jQuery(document).ready(function($){
     seoCount.find('.title').removeClass('error ok warn').addClass(status);
   })
 
-  $('[name^="pageTitle"]').change();
+  //$('[name^="pageTitle"]').change();
 
   $(document).on('keyup change cut paste','[name^="description"]',function(){
     updateVars($(this));
@@ -80,18 +79,19 @@ jQuery(document).ready(function($){
     }
   }
 
+  $('a[data-show-preview]').mouseenter(function(){
+    id = $(this).data('show-preview');
+    $target = $('[data-seo-preview="'+id+'"').show();
+
+    $target.css({
+      position: 'absolute',
+      top: 0
+    })
+  })
+
+  $('a[data-show-preview]').mouseleave(function(){
+    id = $(this).data('show-preview');
+    $target = $('[data-seo-preview="'+id+'"').hide();
+  })
+
 })
-
-var SEOdecodeHtmlEntity = function(str) {
-  return str.replace(/&#(\d+);/g, function(match, dec) {
-    return String.fromCharCode(dec);
-  });
-};
-
-var SEOencodeHtmlEntity = function(str) {
-  var buf = [];
-  for (var i=str.length-1;i>=0;i--) {
-    buf.unshift(['&#', str[i].charCodeAt(), ';'].join(''));
-  }
-  return buf.join('');
-};

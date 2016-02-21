@@ -69,3 +69,23 @@
   color: #999;
   width: 520px;
 }
+
+.seo_preview_link {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}
+
+.seo_preview_link .seo_preview_wrapper {
+  position: absolute;
+  right:0;
+  margin-top: 20px;
+  background: #fff;
+  min-width:650px;
+  z-index: 99;
+  padding:10px;
+  box-shadow:0 0 3px rgba(0,0,0,.3);
+}
+.seo_preview_link.na a {
+  cursor:not-allowed;
+}

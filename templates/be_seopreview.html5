@@ -1,30 +1,31 @@
 
-<div class="seo_preview_wrapper">
+<div class="seo_preview_wrapper"<?= $this->pageList ? ' style="display:none;"':'';?> data-seo-preview="<?= $this->page['id'];?>">
 
-<div class="headline"><?php echo $this->seo_preview_headline;?></div>
-
+<div class="headline"><?= $this->seo_preview_headline;?></div>
 <div class="seo_preview">
 	<div class="title">
-		<span class="page_title"><?php echo $this->title;?></span> 
-		<span class="root_page_title"> - <?php echo $this->rootTitle;?></span>
+		<span class="page_title"><?= $this->title;?></span>
+		<?php if(!$this->ignoreRootTitle) : ?>
+		<span class="root_page_title"> - <?= $this->rootTitle;?></span>
+		<?php endif;?>
 	</div>
-	<div class="url"><?php echo $this->url;?></div>
-	<div class="description" data-empty="<?php echo $this->seo_preview_noDescription;?>"><?php echo $this->description;?></div>
+	<div class="url"><?= $this->url;?></div>
+	<div class="description" data-empty="<?= $this->seo_preview_noDescription;?>"><?= $this->description;?></div>
 </div>
 <div class="seo_count">
-	<div class="title">
-		<span class="label"><?php echo $this->seo_preview_title;?>: </span>
+	<div class="title<?= $this->titleStatus['status'] ? ' '.$this->titleStatus['status']:'';?>">
+		<span class="label"><?= $this->seo_preview_title;?>: </span>
 		<div class="value">
-			<span class="count">0</span>/<span class="max"><?php echo $this->titleLength;?></span> Zeichen
+			<span class="count"><?= $this->titleStatus['length'];?></span>/<span class="max"><?= $this->titleLength;?></span> Zeichen
 		</div>
 	</div>
-	<div class="description">
-		<span class="label"><?php echo $this->seo_preview_description;?>: </span>
+	<div class="description<?= $this->descriptionStatus['status'] ? ' '.$this->descriptionStatus['status']:'';?>">
+		<span class="label"><?= $this->seo_preview_description;?>: </span>
 		<div class="value">
-			<span class="count">0</span>/<span class="max"><?php echo $this->descriptionLength;?></span> Zeichen
+			<span class="count"><?= $this->descriptionStatus['length'];?></span>/<span class="max"><?= $this->descriptionLength;?></span> Zeichen
 		</div>	
 	</div>
 </div>
 <div class="clear"></div>
-<div class="info"><?php echo $this->seo_preview_info;?></div>
+<div class="info"><?= $this->seo_preview_info;?></div>
 </div>
