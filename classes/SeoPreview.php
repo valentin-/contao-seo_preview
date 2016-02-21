@@ -65,7 +65,10 @@ class SeoPreview extends Backend
 		$rootId = $objPage->trail[0];
 		$rootPage = self::getRootPage($rootId);
 		$rootTitle = $rootPage->title;
-		$title .= ' - '.$rootTitle;
+
+		if(!$rootPage->ignoreRootTitle) {
+			$title .= ' - ' . $rootTitle;
+		}
 
 		$maxLength = $GLOBALS['seoPreview']['titleLength'];
 		$titleLength = strlen($title);
